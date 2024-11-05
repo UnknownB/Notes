@@ -1,0 +1,180 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111; /* background color */
+    color: #dddcdc; /* text color */
+}
+
+/* 粗體字顏色 */
+b, strong {
+    color: #cfa603; /* 黃色 */
+}
+
+/* 斜體字顏色 */
+em {
+    color: #ffcc00; /* 黃色 */
+}
+
+/* 刪除線文字顏色 */
+s, del {
+    color: #ff3333; /* 紅色 */
+    text-decoration-color: #ff3333; /* 確保刪除線與文字顏色一致 */
+}
+
+/* 行內程式碼區塊的背景色與字體顏色 */
+code:not(pre code) {
+    background-color: #2d2d2d; /* 深灰色背景 */
+    color: #ffcc00; /* 黃色文字 */
+    padding: 0px 4px;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace; /* 確保是等寬字體 */
+}
+
+/* 通用的程式碼區塊樣式 */
+pre {
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+    color: #a92f07;
+}
+
+ul, ol {
+    padding-left: 2em;
+    margin-bottom: 1em;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    position: fixed; /* 固定位置 */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 200px;
+    max-width: 350px;
+    width: 20%;
+    background-color: #222;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+}
+
+.sidebar-header {
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    z-index: 10; /* 確保標題在其他內容之上 */
+    display: flex;
+    background-color: #222; /* 確保背景色與側邊欄一致 */
+    align-items: center;
+    border-bottom: 1px solid #ccc; /* 新增分隔線 */
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    flex-grow: 1;
+    padding-left: 85px;
+}
+
+.sidebar-header i {
+    position: fixed;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease; /* 添加背景色变化的过渡效果 */
+}
+
+.sidebar-header i:hover {
+    color: #ffa500;
+}
+
+.sidebar.collapsed {
+    left: -300px; /* 用 trnsform 的話，無法讓 menu 維持不動 */
+    /* transform: translateX(100%); 向左移出螢幕外 */
+    overflow: visible; /* 讓 menu、home 超出父層可以顯示 */
+}
+
+#homeButton {
+    left: 5px;
+}
+
+#toggleButton {
+    left: 50px;
+}
+
+.sidebar-content {
+    line-height: 2;
+    padding-inline: 15px;
+    overflow-y: auto;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    margin-left: calc(20% + 20px);
+    margin-right: calc(20% + 80px);
+}
+
+.content h2 {
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.floating-sidebar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 20%;
+    background-color: #222;
+    padding: 20px;
+    line-height: 1.8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: calc(100vh - 40px);
+}
+
+.floating-sidebar h2 {
+    margin-bottom: 10px;
+}
+
+.container a {
+    color: #ff8c00;
+}
+/* container 底下的所有超連結在指標移上去時顯示顏色 */
+.container a:hover {
+    color: #ffa500;
+}
+
+.sidebar a, .floating-sidebar a {
+    color: inherit; /* 取消顏色設定 */
+    text-decoration: none; /*  */
+}
+
+.sidebar li a.active {
+    color: #ff8c00; /* 点击后保持橘色不变 */
+}
+
+/* 超連結在指標移上去時顯示下劃線 */
+a:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* 取消超連結點擊過的顏色變化 */
+a:visited {
+    color: inherit;
+}
+
+#toc a.active {
+    font-weight: bold;
+    color: #ff8c00; /* 点击后保持橘色不变 */
+}

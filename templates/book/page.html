@@ -1,0 +1,135 @@
+{% if not section %}
+    {% set section = get_section(path=page.ancestors[1]) %}
+{% endif %}
+
+{% if not page %}
+    {% set page = section.pages[0] %}
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ get_url(path="book.css") }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>{{ config.title ~ " - " ~ section.title }}</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <i id="homeButton" class="fas fa-home"></i>
+                <i id="toggleButton" class="fas fa-bars"></i>
+                <h2>{{ section.title }}</h2>
+            </div>
+            <div class="sidebar-content">
+                <ol>
+                    {% for subPage in section.pages %}
+                        <li><a href="{{ subPage.permalink | safe }}">{{ subPage.title }}</a></li>
+                    {% endfor %}
+                    {% for subsection_path in section.subsections %}
+                    {% set subsection = get_section(path=subsection_path) %}
+                        <li><a href="{{ subsection.pages[0].permalink | safe }}">{{ subsection.title }}</a></li>
+                    <ol>
+                        {% for subPage in subsection.pages %}
+                        <li><a href="{{ subPage.permalink | safe }}">{{ subPage.title }}</a></li>
+                        {% endfor %}
+                    </ol>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <div class="content">
+            {{ page.content | safe }}
+        </div>
+        {% if page.toc %}
+            {% include "book/toc.html" %}
+        {% endif %}
+    </div>
+</body>
+
+
+<script>
+    // 獲得目前的頁面路徑名稱
+    const currentPath = window.location.pathname;
+
+    // 側邊欄的所有連結
+    const sidebarLinks = document.querySelectorAll('.sidebar a');
+
+    // 找到目前連結的頁面，並且添加 active 屬性
+    sidebarLinks.forEach(link => {
+        if (link.pathname == currentPath) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+
+    const homeButton = document.getElementById('homeButton');
+    homeButton.addEventListener('click', () => {
+        window.location.href = '/';
+    });
+
+    // 處理展開/縮小按鈕的點選事件
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('toggleButton');
+    toggleButton.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+    });
+</script>
+
+<!-- JS for MathJax -->
+		<script>
+		window.MathJax = {
+		  tex: {
+			inlineMath: [['$','$'], ['\\(','\\)']],
+			displayMath: [ ['$$','$$'], ["\\[","\\]"], ]
+		  },
+		  startup: {
+			ready: () => {
+					// Function to iterate over all pre and code elements
+					// if they contain TeX/LaTeX code for maths as defined
+					// by the markers in tex settings above then copy their
+					// textContent before them and remove the element from
+					// the DOM. 
+					
+					// get pre and code elements
+					var prelist = document.getElementsByTagName("pre");
+					var codelist = document.getElementsByTagName("code");
+					// get delimiters for inline and display math
+					var inline = MathJax.config.tex.inlineMath;
+					var display = MathJax.config.tex.displayMath;
+					// start building  a RegExp for each of these math types
+					var inlineRegexList = [];
+					var displayRegexList =[];
+					for(i=0;i<inline.length;i++) {
+						// https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+						delimLEsc = inline[i][0].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+						//alert(delimLEsc);
+						delimREsc = inline[i][1].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+						inlineRegexList.push("("+delimLEsc+")((.|[\\r\\n\\t])*?)("+delimREsc+")");
+					};
+					for(i=0;i<display.length;i++) {
+						// https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+						delimLEsc = display[i][0].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+						//alert(delimLEsc);
+						delimREsc = display[i][1].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+						displayRegexList.push("("+delimLEsc+")((.|[\\r\\n\\t])*?)("+delimREsc+")");
+					};
+					inlineRegExp = new RegExp(inlineRegexList.join("|"));
+					displayRegExp = new RegExp(displayRegexList.join("|"));
+					
+			  // Now process the page in MathJax
+			  MathJax.startup.defaultReady();
+			}
+		  }
+		};
+		</script>
+		<script type="text/javascript" id="MathJax-script" async
+		  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+		</script>
+
+
+</html>

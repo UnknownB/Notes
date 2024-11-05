@@ -1,0 +1,51 @@
+<div class="floating-sidebar">
+    <h2>索引</h2>
+    <ul id="toc">
+        {% for h1 in page.toc %}
+        <li>
+            <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+            {% if h1.children %}
+                <ul id="h2">
+                {% for h2 in h1.children %}
+                    <li>
+                        <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                        {% if h2.children %}
+                            <ul id="h3">
+                            {% for h3 in h2.children %}
+                                <li>
+                                    <a href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+        const tocLinks = document.querySelectorAll('#toc a');
+
+        window.addEventListener('scroll', () => {
+            let fromTop = window.scrollY;
+            headings.forEach(heading => {
+                if (heading.offsetTop <= fromTop + 20 && heading.offsetTop + heading.offsetHeight > fromTop + 20) {
+                    tocLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    const currentLink = document.querySelector(`#toc a[href*="#${heading.id}"]`);
+                    if (currentLink) {
+                        currentLink.classList.add('active');
+                    }
+                }
+                heading.classList.add('active');
+            });
+        });
+    });
+</script>

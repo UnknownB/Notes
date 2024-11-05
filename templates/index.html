@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ get_url(path="bookshelf.css") }}">
+{% endblock %}
+
+
+{% block content %}
+<h1 class="title">
+  {{ config.title }}
+</h1>
+
+<div class="bookshelf">
+  {% for subSection in section.subsections %}
+  {% set section = get_section(path=subSection) %}
+  {% set page = section.pages[0] %}
+  {% set image = section.permalink ~ "_index.png" | safe %}
+  <a href="{{ page.permalink | safe }}" class="book">
+    <div class="cover">
+      <img src="{{ image }}" alt=" ">
+    </div>
+    <div class="book-title">{{section.title}}</div>
+  </a>
+  {% endfor %}
+</div>
+
+{% endblock content %}
