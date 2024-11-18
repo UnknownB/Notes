@@ -1,0 +1,17 @@
+<div class="sidebar" id="sidebar">
+    <ol>
+        <li><a href="{{ book_section.permalink | safe }}">{{ book_section.title }}</a></li>
+        {% for subPage in book_section.pages %}
+            <li><a href="{{ subPage.permalink | safe }}">{{ subPage.title }}</a></li>
+        {% endfor %}
+        {% for subsection_path in book_section.subsections %}
+        {% set subsection = get_section(path=subsection_path) %}
+            <li><a href="{{ subsection.permalink | safe }}">{{ subsection.title }}</a></li>
+        <ol>
+            {% for subPage in subsection.pages %}
+            <li><a href="{{ subPage.permalink | safe }}">{{ subPage.title }}</a></li>
+            {% endfor %}
+        </ol>
+        {% endfor %}
+    </ol>
+</div>

@@ -1,6 +1,6 @@
 +++
 title = "MathJax"
-weight = 2
+weight = 1
 date = 2020-12-04
 +++
 

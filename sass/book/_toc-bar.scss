@@ -1,0 +1,45 @@
+.toc-bar {
+    position: fixed;
+    top: $header_height;
+    right: 0;
+    bottom: 0;
+    width: 20%;
+    z-index: 1;
+    
+    padding: 15px;
+    background: $toc_bar_background;
+    box-shadow: $toc_bar_box_shadow;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+
+    line-height: 1.8;
+
+    h2 {
+        margin: 0;
+        color: $toc_bar_title_color;
+        text-align: center;
+    }
+
+    ul, ol {
+        padding-left: 15px;
+
+        ul, ol {
+            padding-left: 30px;
+        }
+    }
+
+    a {
+        color: inherit; /* 取消顏色變化 */
+        text-decoration: none; /* 取消下劃線 */
+        transition: color 0.3s ease;
+    }
+
+    a.active {
+        color: $a_active;
+        font-weight: bold;
+    }
+}
+
+.toc-bar.collapsed {
+    transform: translateX(100%);
+}

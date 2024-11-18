@@ -1,27 +1,30 @@
 {% extends "base.html" %}
 
+<!-- head -->
 {% block head %}
-<link rel="stylesheet" href="{{ get_url(path="bookshelf.css") }}">
+    <link rel="stylesheet" href="{{ get_url(path="bookshelf/main.css") }}">
+    <title>{{ config.title }}</title>
 {% endblock %}
 
-
+<!-- content -->
 {% block content %}
-<h1 class="title">
-  {{ config.title }}
-</h1>
+    <section class="section">
+    <div class="container">
+        <div class="background"></div>
 
-<div class="bookshelf">
-  {% for subSection in section.subsections %}
-  {% set section = get_section(path=subSection) %}
-  {% set page = section.pages[0] %}
-  {% set image = section.permalink ~ "_index.png" | safe %}
-  <a href="{{ page.permalink | safe }}" class="book">
-    <div class="cover">
-      <img src="{{ image }}" alt=" ">
+        <div class="header" id="header">
+            <h2>{{ config.title }}</h2>
+        </div>
+
+        <div class="bookshelf">
+            {% for subSection in section.subsections %}
+                {% set section = get_section(path=subSection) %}
+                {% set image = section.permalink ~ "_index.png" | safe %}
+                
+                {% include "book.html" %}
+
+            {% endfor %}
+        </div>
     </div>
-    <div class="book-title">{{section.title}}</div>
-  </a>
-  {% endfor %}
-</div>
-
+    </section>
 {% endblock content %}
