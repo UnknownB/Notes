@@ -7,9 +7,6 @@ $text_del: #ff3333;
 $text_code: #ffcc00;
 
 $header_color: #b8008a;
-$h3_color: #b8008a;
-$h4_color: #b8008a;
-
 $header_before_color: #333;
 
 $code_background: #2d2d2d;
@@ -28,14 +25,15 @@ $button_background: inherit;
 $button_hover_color: #000;
 $button_hover_background: #ff8c00;
 
-$sidebar_background: rgba(20, 20, 20, 0.95);
+$sidebar_background: linear-gradient(rgba(20, 20, 20, 0.85), rgba(20, 20, 20, 0.6));
 $sidebar_box_shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 
-$toc_bar_background: rgba(20, 20, 20, 0.95);
+$toc_bar_background: linear-gradient(rgba(20, 20, 20, 0.85), rgba(20, 20, 20, 0.6));
 $toc_bar_title_color: #ff8c00;
 $toc_bar_box_shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
 
 // size
+$phone_width: 768px;
 $header_height: 47px;
 
 
