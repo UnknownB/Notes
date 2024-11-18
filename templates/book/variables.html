@@ -1,0 +1,9 @@
+{% if not section %}
+    {% set this_page = page %}
+    {% set book_section = get_section(path=page.ancestors[1]) %}
+{% else %}
+    {% set this_page = section %}
+    {% set book_section = get_section(path=section.components[0] ~ "/_index.md") %}
+{% endif %}
+
+{% set toc = this_page.toc %}

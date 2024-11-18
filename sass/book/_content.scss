@@ -1,0 +1,102 @@
+.content {
+    position: relative;
+    top: $header_height;
+    padding: 20px;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+    background: $body_background;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+    a {
+        color: $a_active;
+        text-decoration: underline;
+    }
+
+    img {
+        padding-top: 5px;
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    /* 粗體字顏色 */
+    b, strong {
+        color: $text_strong;
+    }
+
+    /* 斜體字顏色 */
+    em {
+        color: $text_em;
+    }
+
+    /* 刪除線文字顏色 */
+    s, del {
+        color: $text_del;
+        text-decoration-color: $text_del;
+    }
+
+    /* 行內程式碼區塊的背景色與字體顏色 */
+    code:not(pre code) {
+        color: $text_code;
+        background-color: $code_background;
+        padding: 0px 4px;
+        border-radius: 3px;
+        font-family: 'Courier New', Courier, monospace; /* 等寬字體 */
+    }
+
+    /* 通用的程式碼區塊樣式，不做太多設定以套用模板效果 */
+    pre {
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin-bottom: 20px;
+    }
+
+    ul, ol {
+        padding-left: 2em;
+        margin-bottom: 1em;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: $header_color;
+    }
+
+    h2 {
+        padding-top: 20px;
+        padding-bottom: 5px;
+    }
+
+    h3 {
+        padding-top: 15px;
+        padding-bottom: 5px;
+    }
+
+    h2::before {
+        content: "● ";
+        color: $header_before_color;
+    }
+    
+    h3::before {
+        content: "○ ";
+        color: $header_before_color;
+    }
+    
+    h4::before {
+        content: "■ ";
+        color: $header_before_color;
+    }
+
+}
+
+@media (max-width: 768px) {
+    /* 手機螢幕的樣式 */
+    .content {
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) {
+    .content {
+        width: 50%;
+    }
+}

@@ -1,7 +1,7 @@
-<div class="floating-sidebar">
+<div id="toc-bar"  class="toc-bar">
     <h2>索引</h2>
     <ul id="toc">
-        {% for h1 in page.toc %}
+        {% for h1 in toc %}
         <li>
             <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
             {% if h1.children %}
@@ -14,6 +14,33 @@
                             {% for h3 in h2.children %}
                                 <li>
                                     <a href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
+                                    {% if h3.children %}
+                                        <ul id="h4">
+                                        {% for h4 in h3.children %}
+                                            <li>
+                                                <a href="{{ h4.permalink | safe }}">{{ h4.title }}</a>
+                                                {% if h4.children %}
+                                                    <ul id="h5">
+                                                    {% for h5 in h4.children %}
+                                                        <li>
+                                                            <a href="{{ h5.permalink | safe }}">{{ h5.title }}</a>
+                                                            {% if h5.children %}
+                                                                <ul id="h6">
+                                                                {% for h6 in h5.children %}
+                                                                    <li>
+                                                                        <a href="{{ h6.permalink | safe }}">{{ h6.title }}</a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                                </ul>
+                                                            {% endif %}
+                                                        </li>
+                                                    {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                        </ul>
+                                    {% endif %}
                                 </li>
                             {% endfor %}
                             </ul>
@@ -26,26 +53,3 @@
         {% endfor %}
     </ul>
 </div>
-
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-        const tocLinks = document.querySelectorAll('#toc a');
-
-        window.addEventListener('scroll', () => {
-            let fromTop = window.scrollY;
-            headings.forEach(heading => {
-                if (heading.offsetTop <= fromTop + 20 && heading.offsetTop + heading.offsetHeight > fromTop + 20) {
-                    tocLinks.forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    const currentLink = document.querySelector(`#toc a[href*="#${heading.id}"]`);
-                    if (currentLink) {
-                        currentLink.classList.add('active');
-                    }
-                }
-                heading.classList.add('active');
-            });
-        });
-    });
-</script>
