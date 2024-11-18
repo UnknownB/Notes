@@ -9,10 +9,17 @@
     padding: 15px;
     background: $toc_bar_background;
     box-shadow: $toc_bar_box_shadow;
+    backdrop-filter: blur(10px); /* 添加霧玻璃模糊效果 */
+    -webkit-backdrop-filter: blur(10px); /* 適配 Safari */
     overflow-y: auto;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s, width 0.3s;
 
     line-height: 1.8;
+
+    @media (max-width: $phone_width) {
+        width: 30%;
+        transform: translateX(100%);
+    }
 
     h2 {
         margin: 0;
@@ -22,6 +29,7 @@
 
     ul, ol {
         padding-left: 15px;
+        white-space: nowrap;
 
         ul, ol {
             padding-left: 30px;
@@ -42,4 +50,8 @@
 
 .toc-bar.collapsed {
     transform: translateX(100%);
+
+    @media (max-width: $phone_width) {
+        transform: translateX(0%);
+    }
 }

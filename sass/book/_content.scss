@@ -1,12 +1,17 @@
 .content {
     position: relative;
     top: $header_height;
+    width: 50%;
     padding: 20px;
     overflow-y: auto;
     transition: width 0.3s ease;
     background: $body_background;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+    @media (max-width: $phone_width) {
+        width: 100%;
+    }
 
     a {
         color: $a_active;
@@ -86,17 +91,4 @@
         color: $header_before_color;
     }
 
-}
-
-@media (max-width: 768px) {
-    /* 手機螢幕的樣式 */
-    .content {
-        width: 100%;
-    }
-}
-
-@media (min-width: 769px) {
-    .content {
-        width: 50%;
-    }
 }
