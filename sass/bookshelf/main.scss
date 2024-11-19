@@ -1,7 +1,7 @@
 @use '../theme' as *;
 
 body {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: $body_font_family;
     margin: 0;
     padding: 0;
     color: $text_color;

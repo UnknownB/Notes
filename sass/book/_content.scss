@@ -46,7 +46,7 @@
         background-color: $code_background;
         padding: 0px 4px;
         border-radius: 3px;
-        font-family: 'Courier New', Courier, monospace; /* 等寬字體 */
+        font-family: $code_font_family;
     }
 
     /* 通用的程式碼區塊樣式，不做太多設定以套用模板效果 */
@@ -55,6 +55,7 @@
         border-radius: 5px;
         overflow-x: auto;
         margin-bottom: 20px;
+        font-family: $code_font_family;
     }
 
     ul, ol {
