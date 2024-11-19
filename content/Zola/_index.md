@@ -3,6 +3,8 @@ title = "Zola"
 sort_by = "weight"
 template = "book/page.html"
 page_template = "book/page.html"
+date = 2024-07-17
+update = 2024-11-19
 +++
 
 ## Zola
@@ -40,6 +42,14 @@ page_template = "book/page.html"
 ## Start server (啟動開發伺服器)
 
 ```shell
+# 移動到網站位置
 cd $site_name
+
+# 以預設的 127.0.0.1 啟動
 zola serve
+
+# 以 ip 啟動 (可讓其他裝置連線)
+# --interface 0.0.0.0 接受區域網內任何設備連線
+# --base-url 設為自己 ip 才能正確找到 css 等路徑
+zola serve --interface 0.0.0.0 --base-url $ip
 ```
