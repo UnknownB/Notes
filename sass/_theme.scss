@@ -1,3 +1,9 @@
+// font
+
+$body_font_family: 'Roboto', Arial, 'Noto Sans TC';
+$code_font_family: 'Courier New', Courier, monospace; /* 等寬字體 */
+
+
 // color
 
 $text_color: #ececec;
@@ -14,6 +20,7 @@ $code_background: #2d2d2d;
 $a_active: #ff8c00;
 $a_hover: #ffa500;
 
+$body_background_color: black; // 安全域、螢幕翻轉的瞬間會看到
 $body_background: linear-gradient(135deg, #1a1a1a, #111);
 
 $header_background: rgba(0, 0, 0, 0.8);
@@ -33,7 +40,7 @@ $toc_bar_title_color: #ff8c00;
 $toc_bar_box_shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
 
 // size
-$phone_width: 768px;
+$phone_width: 730px;
 $header_height: 47px;
 
 
