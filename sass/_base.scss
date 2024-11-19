@@ -1,0 +1,18 @@
+
+body {
+    font-family: $body_font_family;
+    margin: 0;
+    padding: 0;
+    color: $text_color;
+    font-size: clamp(12px, 1.7vw, 16px);
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    background: $body_background;
+}

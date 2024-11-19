@@ -1,61 +1,6 @@
 @use '../theme' as *;
-
-body {
-    font-family: $body_font_family;
-    margin: 0;
-    padding: 0;
-    color: $text_color;
-    font-size: clamp(12px, 1.7vw, 16px);
-}
-
-.background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 0;
-    background: $body_background;
-}
-
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: $header_height;
-    z-index: 2;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    background: $header_background;
-    border-bottom: $header_border;
-
-    h2 {
-        color: $header_title_color;
-        font-size: 1.5rem; /* 預設根元素字體的 1.5倍 */
-        margin: 0 auto; /* 上下邊距 0 左右 auto */
-        letter-spacing: 1px; /* 字母間距 */
-    }
-
-    i {
-        position: absolute;
-
-        padding: 10px;
-        color: $button_color;
-        background-color: $button_background;
-        border-radius: 5px;
-        cursor: pointer; /* 指標移上去時手指顯示 */
-        transition: background-color 0.3s ease;
-
-        &:hover {
-            color: $button_hover_color;
-            background-color: $button_hover_background;
-        }
-    }
-}
+@import '../base';
+@import '../header';
 
 .bookshelf {
     position: relative;
