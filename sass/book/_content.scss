@@ -65,31 +65,48 @@
 
     h1, h2, h3, h4, h5, h6 {
         color: $header_color;
+        font-weight: bold;
+        margin: 1.5em 0 0.8em;
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: 1.9rem;
     }
 
     h2 {
-        padding-top: 20px;
-        padding-bottom: 5px;
+        font-size: 1.6rem;
+        border-bottom: 2px solid $header_before_color;
+        padding-bottom: 0.2em;
     }
 
     h3 {
-        padding-top: 15px;
-        padding-bottom: 5px;
+        font-size: 1.3rem;
+        color: $header_color;
+    }
+
+    h4 {
+        font-size: 1.1rem;
+        font-weight: normal;
+        color: $header_color;
     }
 
     h2::before {
         content: "● ";
         color: $header_before_color;
+        font-size: 1.2em;
     }
     
     h3::before {
         content: "○ ";
         color: $header_before_color;
+        font-size: 1em;
     }
     
     h4::before {
         content: "■ ";
         color: $header_before_color;
+        font-size: 0.8em;
     }
 
 }
