@@ -40,6 +40,38 @@
         text-decoration-color: $text_del;
     }
 
+        ul, ol {
+        padding-left: 2em;
+        margin-bottom: 1em;
+    }
+
+    /* 表格樣式 */
+    table {
+        width: 100%;
+        border-collapse: collapse; /* 邊框合併 */
+        margin: 1em 0;
+    }
+
+    th, td {
+        padding: 8px 12px;
+        border: $table_border;
+    }
+
+    th {
+        color: $table_th_color;
+        background-color: $table_th_background;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: $table_tr_even_color; /* 偶數行背景色 */
+    }
+
+    tr:hover {
+        background-color: $table_tr_hover_color; /* 滑鼠懸停時的背景色 */
+    }
+
     /* 行內程式碼區塊的背景色與字體顏色 */
     code:not(pre code) {
         color: $text_code;
@@ -58,38 +90,59 @@
         font-family: $code_font_family;
     }
 
-    ul, ol {
-        padding-left: 2em;
-        margin-bottom: 1em;
+    blockquote {
+        position: relative;
+        border-left: 4px solid #cccccc;
+        color: #cccccc;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1px 15px;
+        margin: 1em 0;
     }
 
     h1, h2, h3, h4, h5, h6 {
         color: $header_color;
+        font-weight: bold;
+        margin: 1.5em 0 0.8em;
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: 1.9rem;
     }
 
     h2 {
-        padding-top: 20px;
-        padding-bottom: 5px;
+        font-size: 1.6rem;
+        border-bottom: 2px solid $header_before_color;
+        padding-bottom: 0.2em;
     }
 
     h3 {
-        padding-top: 15px;
-        padding-bottom: 5px;
+        font-size: 1.3rem;
+        color: $header_color;
+    }
+
+    h4 {
+        font-size: 1.1rem;
+        font-weight: normal;
+        color: $header_color;
     }
 
     h2::before {
         content: "● ";
         color: $header_before_color;
+        font-size: 1.2em;
     }
     
     h3::before {
         content: "○ ";
         color: $header_before_color;
+        font-size: 1em;
     }
     
     h4::before {
         content: "■ ";
         color: $header_before_color;
+        font-size: 0.8em;
     }
 
 }
