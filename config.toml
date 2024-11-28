@@ -5,7 +5,7 @@ title = "BR Notes"
 
 author = "BR"
 
-sort_by = "title"
+sort_by = "weight"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true

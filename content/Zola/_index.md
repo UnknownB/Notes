@@ -3,6 +3,7 @@ title = "Zola"
 sort_by = "weight"
 template = "book/page.html"
 page_template = "book/page.html"
+weight = 1
 date = 2024-07-17
 update = 2024-11-19
 +++

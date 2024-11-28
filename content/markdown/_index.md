@@ -3,6 +3,9 @@ title = "Markdown"
 sort_by = "weight"
 template = "book/page.html"
 page_template = "book/page.html"
+weight = 2
+date = 2024-07-17
+update = 2024-11-19
 +++
 
 ## Markdown
